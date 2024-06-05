@@ -13,7 +13,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 describe('<Header />', () => {
   it('renders component correctly', () => {
-    render(
+    const { container } = render(
       <MemoryRouter initialEntries={['/']}>
         <Header />
       </MemoryRouter>,
@@ -24,10 +24,12 @@ describe('<Header />', () => {
 
     const goBack = screen.queryByText('돌아가기');
     expect(goBack).not.toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders component correctly with /add URL', () => {
-    render(
+    const { container } = render(
       <MemoryRouter initialEntries={['/add']}>
         <Header />
       </MemoryRouter>,
@@ -39,6 +41,8 @@ describe('<Header />', () => {
     const goBack = screen.getByText('돌아가기');
     expect(goBack).toBeInTheDocument();
     expect(goBack.getAttribute('href')).toBe('/');
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders component correctly with /detail/:id URL', () => {
