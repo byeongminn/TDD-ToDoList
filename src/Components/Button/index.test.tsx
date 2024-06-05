@@ -6,7 +6,7 @@
   4. 버튼을 클릭할 수 있으며, 클릭하였을 때 동작은 부모 컴포넌트가 결정한다.
 */
 
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Button } from '.';
 import 'jest-styled-components';
 
@@ -48,5 +48,16 @@ describe('<Button />', () => {
     expect(parent).toHaveStyleRule('background-color', hoverBackgroundColor, {
       modifier: ':hover',
     });
+  });
+
+  it('clicks the button', () => {
+    const handleClick = jest.fn();
+    render(<Button label="추가" onClick={handleClick} />);
+
+    const label = screen.getByText('추가');
+    expect(handleClick).toHaveBeenCalledTimes(0);
+
+    fireEvent.click(label);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
