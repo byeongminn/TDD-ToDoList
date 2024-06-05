@@ -6,6 +6,13 @@
   4. 버튼을 클릭할 수 있으며, 클릭하였을 때 동작은 부모 컴포넌트가 결정한다.
 */
 
+import { render, screen } from '@testing-library/react';
+
 describe('<Button />', () => {
-  it('renders component correctly', () => {});
+  it('renders component correctly', () => {
+    render(<Button label="추가" />);
+
+    const label = screen.getByText('추가');
+    expect(label).toBeInTheDocument();
+  });
 });
