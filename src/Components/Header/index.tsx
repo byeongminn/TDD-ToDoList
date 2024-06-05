@@ -23,8 +23,30 @@ export const Header = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e40ff;
+`;
 
-const Title = styled.div``;
+const Title = styled.div`
+  padding: 1.25rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #ffffff;
+`;
 
-const GoBack = styled(Link)``;
+const GoBack = styled(Link)`
+  padding: 1.25rem;
+  position: absolute;
+  left: 1.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+`;
