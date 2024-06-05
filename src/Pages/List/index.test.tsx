@@ -81,4 +81,28 @@ describe('<List />', () => {
     fireEvent.click(toDoItem);
     expect(url.textContent).toBe('/detail/1');
   });
+
+  it('moves to add page', () => {
+    const TestComponent = () => {
+      const { pathname } = useLocation();
+
+      return <div>{pathname}</div>;
+    };
+
+    render(
+      <MemoryRouter>
+        <TestComponent />
+        <List />
+      </MemoryRouter>,
+    );
+
+    const url = screen.getByText('/');
+    expect(url).toBeInTheDocument();
+
+    const addButton = screen.getByText('+');
+    expect(addButton.getAttribute('href')).toBe('/add');
+
+    fireEvent.click(addButton);
+    expect(url.textContent).toBe('/add');
+  });
 });
