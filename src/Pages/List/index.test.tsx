@@ -9,12 +9,17 @@
 
 import { fireEvent, render, screen } from '@testing-library/react';
 import { List } from '.';
+import { MemoryRouter, useLocation } from 'react-router-dom';
 
 describe('<List />', () => {
   it('renders component correctly', () => {
     localStorage.setItem('ToDoList', '["ToDo 1", "ToDo 2", "ToDo 3"]');
 
-    render(<List />);
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <List />
+      </MemoryRouter>,
+    );
 
     const toDoItem1 = screen.getByText('ToDo 1');
     expect(toDoItem1).toBeInTheDocument();
@@ -31,7 +36,11 @@ describe('<List />', () => {
   it('deletes toDo item', () => {
     localStorage.setItem('ToDoList', '["ToDo 1", "ToDo 2", "ToDo 3"]');
 
-    render(<List />);
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <List />
+      </MemoryRouter>,
+    );
 
     const toDoItem = screen.getByText('ToDo 2');
     expect(toDoItem).toBeInTheDocument();
@@ -42,5 +51,31 @@ describe('<List />', () => {
     expect(
       JSON.parse(localStorage.getItem('ToDoList') as string),
     ).not.toContain('ToDo 2');
+  });
+
+  it('moves to detail page', () => {
+    localStorage.setItem('ToDoList', '["ToDo 1", "ToDo 2", "ToDo 3"]');
+
+    const TestComponent = () => {
+      const { pathname } = useLocation();
+
+      return <div>{pathname}</div>;
+    };
+
+    render(
+      <MemoryRouter>
+        <TestComponent />
+        <List />
+      </MemoryRouter>,
+    );
+
+    const url = screen.getByText('/');
+    expect(url).toBeInTheDocument();
+
+    const toDoItem = screen.getByText('ToDo 2');
+    expect(toDoItem.getAttribute('href')).toBe('/detail/1');
+
+    fireEvent.click(toDoItem);
+    expect(url.textContent).toBe('/detail/1');
   });
 });
