@@ -1,3 +1,4 @@
+import { Button } from 'Components';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -12,10 +13,25 @@ export const List = () => {
     }
   }, []);
 
+  const onDelete = (index: number) => {
+    const list = [...toDoList];
+    list.splice(index, 1);
+    setToDoList(list);
+    localStorage.setItem('ToDoList', JSON.stringify(list));
+  };
+
   return (
     <Container>
-      {toDoList.map((toDo) => (
-        <ToDoItem key={toDo}>{toDo}</ToDoItem>
+      {toDoList.map((toDo, index) => (
+        <ToDoItem key={toDo}>
+          <div>{toDo}</div>
+          <Button
+            label="삭제"
+            backgroundColor="#ff1744"
+            hoverBackgroundColor="#f01440"
+            onClick={() => onDelete(index)}
+          />
+        </ToDoItem>
       ))}
     </Container>
   );
