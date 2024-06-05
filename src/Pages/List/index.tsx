@@ -36,7 +36,7 @@ export const List = () => {
           </ToDoItem>
         ))}
       </ToDoList>
-      <AddButton>+</AddButton>
+      <AddButton to="/add">+</AddButton>
     </Container>
   );
 };
@@ -49,4 +49,4 @@ const ToDoItem = styled.div``;
 
 const Label = styled(Link)``;
 
-const AddButton = styled.div``;
+const AddButton = styled(Link)``;
