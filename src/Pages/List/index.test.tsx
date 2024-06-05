@@ -7,7 +7,7 @@
   5. 추가 버튼을 누르면 할 일 추가 페이지('/add')로 이동한다.
 */
 
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { List } from '.';
 
 describe('<List />', () => {
@@ -24,5 +24,23 @@ describe('<List />', () => {
 
     const toDoItem3 = screen.getByText('ToDo 3');
     expect(toDoItem3).toBeInTheDocument();
+
+    expect(screen.getAllByText('삭제').length).toBe(3);
+  });
+
+  it('deletes toDo item', () => {
+    localStorage.setItem('ToDoList', '["ToDo 1", "ToDo 2", "ToDo 3"]');
+
+    render(<List />);
+
+    const toDoItem = screen.getByText('ToDo 2');
+    expect(toDoItem).toBeInTheDocument();
+
+    fireEvent.click(toDoItem.nextElementSibling as HTMLElement);
+
+    expect(toDoItem).not.toBeInTheDocument();
+    expect(
+      JSON.parse(localStorage.getItem('ToDoList') as string),
+    ).not.toContain('ToDo 2');
   });
 });
