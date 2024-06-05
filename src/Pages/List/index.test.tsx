@@ -31,6 +31,9 @@ describe('<List />', () => {
     expect(toDoItem3).toBeInTheDocument();
 
     expect(screen.getAllByText('삭제').length).toBe(3);
+
+    const addButton = screen.getByText('+');
+    expect(addButton).toBeInTheDocument();
   });
 
   it('deletes toDo item', () => {
