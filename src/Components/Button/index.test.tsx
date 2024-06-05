@@ -25,8 +25,8 @@ describe('<Button />', () => {
   });
 
   it('changes backgroundColor and hoverBackgroundColor Props', () => {
-    const backgroundColor = '#304ffe';
-    const hoverBackgroundColor = '#1e40ff';
+    const backgroundColor = '#ff1744';
+    const hoverBackgroundColor = '#f01440';
 
     render(
       <Button
