@@ -21,6 +21,9 @@ describe('<Header />', () => {
 
     const label = screen.getByText('할 일 목록');
     expect(label).toBeInTheDocument();
+
+    const goBack = screen.queryByText('돌아가기');
+    expect(goBack).not.toBeInTheDocument();
   });
 
   it('renders component correctly with /add URL', () => {
@@ -32,6 +35,10 @@ describe('<Header />', () => {
 
     const label = screen.getByText('할 일 추가');
     expect(label).toBeInTheDocument();
+
+    const goBack = screen.getByText('돌아가기');
+    expect(goBack).toBeInTheDocument();
+    expect(goBack.getAttribute('href')).toBe('/');
   });
 
   it('renders component correctly with /detail/:id URL', () => {
@@ -43,6 +50,10 @@ describe('<Header />', () => {
 
     const label = screen.getByText('할 일 상세');
     expect(label).toBeInTheDocument();
+
+    const goBack = screen.getByText('돌아가기');
+    expect(goBack).toBeInTheDocument();
+    expect(goBack.getAttribute('href')).toBe('/');
   });
 
   it('renders component correctly with NotFound', () => {
@@ -54,5 +65,9 @@ describe('<Header />', () => {
 
     const label = screen.getByText('에러');
     expect(label).toBeInTheDocument();
+
+    const goBack = screen.getByText('돌아가기');
+    expect(goBack).toBeInTheDocument();
+    expect(goBack.getAttribute('href')).toBe('/');
   });
 });

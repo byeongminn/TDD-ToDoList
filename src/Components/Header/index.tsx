@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -17,6 +18,7 @@ export const Header = () => {
   return (
     <Container>
       <Title>{title}</Title>
+      {pathname !== '/' && <GoBack to="/">돌아가기</GoBack>}
     </Container>
   );
 };
@@ -24,3 +26,5 @@ export const Header = () => {
 const Container = styled.div``;
 
 const Title = styled.div``;
+
+const GoBack = styled(Link)``;
