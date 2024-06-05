@@ -22,6 +22,13 @@ describe('<Button />', () => {
     expect(parent).toHaveStyleRule('background-color', '#1e40ff', {
       modifier: ':hover',
     });
+    expect(parent).toHaveStyleRule(
+      'box-shadow',
+      'inset 5px 5px 10px rgba(0, 0, 0, 0.2)',
+      {
+        modifier: ':active',
+      },
+    );
   });
 
   it('changes backgroundColor and hoverBackgroundColor Props', () => {
