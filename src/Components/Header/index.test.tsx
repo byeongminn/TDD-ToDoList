@@ -7,6 +7,14 @@
   5. 돌아가기 링크를 클릭하면 홈 URL로 이동한다.
 */
 
+import { render, screen } from '@testing-library/react';
+import { Header } from '.';
+
 describe('<Header />', () => {
-  it('renders component correctly', () => {});
+  it('renders component correctly', () => {
+    render(<Header />);
+
+    const label = screen.getByText('할 일 목록');
+    expect(label).toBeInTheDocument();
+  });
 });
