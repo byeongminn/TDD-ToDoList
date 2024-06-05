@@ -30,7 +30,11 @@ interface ContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
+  padding: 0.625rem 1.25rem;
   background-color: ${({ $backgroundColor }) => $backgroundColor ?? '#304ffe'};
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ $hoverBackgroundColor }) =>
@@ -41,4 +45,7 @@ const Container = styled.div<ContainerProps>`
   }
 `;
 
-const Label = styled.div``;
+const Label = styled.div`
+  font-size: 1rem;
+  color: #ffffff;
+`;
