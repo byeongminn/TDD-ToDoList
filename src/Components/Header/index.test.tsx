@@ -7,7 +7,7 @@
   5. 돌아가기 링크를 클릭하면 홈 URL로 이동한다.
 */
 
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Header } from '.';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -69,5 +69,20 @@ describe('<Header />', () => {
     const goBack = screen.getByText('돌아가기');
     expect(goBack).toBeInTheDocument();
     expect(goBack.getAttribute('href')).toBe('/');
+  });
+
+  it('renders component correctly with goBack link', () => {
+    render(
+      <MemoryRouter initialEntries={['/not_found']}>
+        <Header />
+      </MemoryRouter>,
+    );
+
+    const goBack = screen.getByText('돌아가기');
+    fireEvent.click(goBack);
+
+    const label = screen.getByText('할 일 목록');
+    expect(label).toBeInTheDocument();
+    expect(goBack).not.toBeInTheDocument();
   });
 });
