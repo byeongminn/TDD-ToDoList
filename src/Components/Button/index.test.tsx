@@ -12,7 +12,7 @@ import 'jest-styled-components';
 
 describe('<Button />', () => {
   it('renders component correctly', () => {
-    render(<Button label="추가" />);
+    const { container } = render(<Button label="추가" />);
 
     const label = screen.getByText('추가');
     expect(label).toBeInTheDocument();
@@ -29,6 +29,8 @@ describe('<Button />', () => {
         modifier: ':active',
       },
     );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('changes backgroundColor and hoverBackgroundColor Props', () => {
