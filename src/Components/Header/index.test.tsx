@@ -9,12 +9,50 @@
 
 import { render, screen } from '@testing-library/react';
 import { Header } from '.';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('<Header />', () => {
   it('renders component correctly', () => {
-    render(<Header />);
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <Header />
+      </MemoryRouter>,
+    );
 
     const label = screen.getByText('할 일 목록');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('renders component correctly with /add URL', () => {
+    render(
+      <MemoryRouter initialEntries={['/add']}>
+        <Header />
+      </MemoryRouter>,
+    );
+
+    const label = screen.getByText('할 일 추가');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('renders component correctly with /detail/:id URL', () => {
+    render(
+      <MemoryRouter initialEntries={['/detail/1']}>
+        <Header />
+      </MemoryRouter>,
+    );
+
+    const label = screen.getByText('할 일 상세');
+    expect(label).toBeInTheDocument();
+  });
+
+  it('renders component correctly with NotFound', () => {
+    render(
+      <MemoryRouter initialEntries={['/not_found']}>
+        <Header />
+      </MemoryRouter>,
+    );
+
+    const label = screen.getByText('에러');
     expect(label).toBeInTheDocument();
   });
 });
