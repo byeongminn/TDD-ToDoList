@@ -23,23 +23,30 @@ export const List = () => {
 
   return (
     <Container>
-      {toDoList.map((toDo, index) => (
-        <ToDoItem key={toDo}>
-          <Label to={`/detail/${index}`}>{toDo}</Label>
-          <Button
-            label="삭제"
-            backgroundColor="#ff1744"
-            hoverBackgroundColor="#f01440"
-            onClick={() => onDelete(index)}
-          />
-        </ToDoItem>
-      ))}
+      <ToDoList>
+        {toDoList.map((toDo, index) => (
+          <ToDoItem key={toDo}>
+            <Label to={`/detail/${index}`}>{toDo}</Label>
+            <Button
+              label="삭제"
+              backgroundColor="#ff1744"
+              hoverBackgroundColor="#f01440"
+              onClick={() => onDelete(index)}
+            />
+          </ToDoItem>
+        ))}
+      </ToDoList>
+      <AddButton>+</AddButton>
     </Container>
   );
 };
 
 const Container = styled.div``;
 
+const ToDoList = styled.div``;
+
 const ToDoItem = styled.div``;
 
 const Label = styled(Link)``;
+
+const AddButton = styled.div``;
