@@ -8,6 +8,7 @@
 */
 
 import { render, screen } from '@testing-library/react';
+import { List } from '.';
 
 describe('<List />', () => {
   it('renders component correctly', () => {
