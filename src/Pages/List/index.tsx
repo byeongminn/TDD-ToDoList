@@ -1,5 +1,6 @@
 import { Button } from 'Components';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const List = () => {
@@ -24,7 +25,7 @@ export const List = () => {
     <Container>
       {toDoList.map((toDo, index) => (
         <ToDoItem key={toDo}>
-          <div>{toDo}</div>
+          <Label to={`/detail/${index}`}>{toDo}</Label>
           <Button
             label="삭제"
             backgroundColor="#ff1744"
@@ -40,3 +41,5 @@ export const List = () => {
 const Container = styled.div``;
 
 const ToDoItem = styled.div``;
+
+const Label = styled(Link)``;
