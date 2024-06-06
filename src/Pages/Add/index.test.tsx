@@ -6,6 +6,13 @@
   4. 아무 할 일이 없는 경우에는 할 일 추가 버튼을 클릭하여도 빈 할 일이 저장되지 않으며 할 일 목록 페이지로 이동하지 않는다.
 */
 
+import { render, screen } from '@testing-library/react';
+
 describe('<Add />', () => {
-  it('renders component correctly', () => {});
+  it('renders component correctly', () => {
+    render(<Add />);
+
+    const input = screen.getByPlaceholderText('할 일을 입력해 주세요.');
+    expect(input).toBeInTheDocument();
+  });
 });
