@@ -12,7 +12,7 @@ import { MemoryRouter, useLocation } from 'react-router-dom';
 
 describe('<Add />', () => {
   it('renders component correctly', () => {
-    render(
+    const { container } = render(
       <MemoryRouter initialEntries={['/add']}>
         <Add />
       </MemoryRouter>,
@@ -23,6 +23,8 @@ describe('<Add />', () => {
 
     const button = screen.getByText('추가');
     expect(button).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('add a new ToDo and redirect to the root page', () => {
