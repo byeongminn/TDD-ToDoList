@@ -26,7 +26,11 @@ export const Add = () => {
 };
 
 const Container = styled.div`
+  padding: 1.25rem;
   display: flex;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const Input = styled.input`
