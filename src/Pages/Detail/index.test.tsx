@@ -25,6 +25,9 @@ describe('<Detail />', () => {
 
     const toDoItem = screen.getByText('ToDo 2');
     expect(toDoItem).toBeInTheDocument();
+
+    const button = screen.getByText('삭제');
+    expect(button).toBeInTheDocument();
   });
 
   it('redirect to Not Found Page if todo id is wrong', () => {
