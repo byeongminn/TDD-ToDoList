@@ -41,12 +41,60 @@ export const List = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+`;
 
-const ToDoList = styled.div``;
+const ToDoList = styled.div`
+  margin-bottom: 1.25rem;
+  min-width: 21.875rem;
+  height: 25rem;
+  border: 1px solid #bdbdbd;
+  overflow-y: scroll;
+`;
 
-const ToDoItem = styled.div``;
+const ToDoItem = styled.div`
+  margin: 0.625rem;
+  padding: 0.625rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #bdbdbd;
+`;
 
-const Label = styled(Link)``;
+const Label = styled(Link)`
+  margin-right: 1.5rem;
+  flex: 1;
+  font-size: 1rem;
+  text-decoration: none;
+`;
 
-const AddButton = styled(Link)``;
+const AddButton = styled(Link)`
+  width: 3.75rem;
+  height: 3.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -1.875rem;
+  background-color: #304ffe;
+  border-radius: 1.875rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1e40ff;
+  }
+  &:active {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+`;
