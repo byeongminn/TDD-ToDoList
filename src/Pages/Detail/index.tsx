@@ -1,19 +1,25 @@
 import { Button } from 'Components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Detail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const toDoList = JSON.parse(localStorage.getItem('ToDoList') || '[]');
-  let toDo = '';
-  if (id) {
-    toDo = toDoList[id];
-  }
+
+  const [toDoList, setToDoList] = useState<string[]>([]);
+  const [toDo, setToDo] = useState<string>('');
 
   useEffect(() => {
-    if (!toDo) navigate('/404', { replace: true });
+    const list = JSON.parse(localStorage.getItem('ToDoList') || '[]');
+    setToDoList(list);
+
+    if (id) {
+      const item = list[id];
+
+      if (!item) navigate('/404', { replace: true });
+      setToDo(item);
+    }
   }, []);
 
   const onDelete = () => {
