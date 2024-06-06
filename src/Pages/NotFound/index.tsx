@@ -4,4 +4,6 @@ export const NotFound = () => {
   return <Container>Not Found</Container>;
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  font-size: 1.25rem;
+`;
