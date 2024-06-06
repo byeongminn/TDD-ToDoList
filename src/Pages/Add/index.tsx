@@ -8,6 +8,7 @@ export const Add = () => {
   const [toDo, setToDo] = useState<string>('');
 
   const addToDo = () => {
+    if (toDo === '') return;
     const list = JSON.parse(localStorage.getItem('ToDoList') || '[]');
     localStorage.setItem('ToDoList', JSON.stringify([...list, toDo]));
     navigate('/');
