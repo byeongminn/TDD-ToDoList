@@ -15,5 +15,8 @@ describe('<Add />', () => {
 
     const input = screen.getByPlaceholderText('할 일을 입력해 주세요.');
     expect(input).toBeInTheDocument();
+
+    const button = screen.getByText('추가');
+    expect(button).toBeInTheDocument();
   });
 });
