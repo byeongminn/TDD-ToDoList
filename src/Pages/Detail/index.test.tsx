@@ -7,7 +7,7 @@
   5. 삭제 버튼을 클릭하면 현재 보이는 할 일을 삭제하고, 할 일 목록 페이지('/')로 이동한다.
 */
 
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { Detail } from '.';
 
@@ -51,5 +51,35 @@ describe('<Detail />', () => {
 
     const url = screen.getByText('/404');
     expect(url).toBeInTheDocument();
+  });
+
+  it('deletes a ToDo and redirect to the List Page', () => {
+    localStorage.setItem('ToDoList', '["ToDo 1","ToDo 2"]');
+
+    const TestComponent = () => {
+      const { pathname } = useLocation();
+
+      return <div>{pathname}</div>;
+    };
+
+    render(
+      <MemoryRouter initialEntries={['/detail/1']}>
+        <TestComponent />
+        <Routes>
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const url = screen.getByText('/detail/1');
+    expect(url).toBeInTheDocument();
+
+    const button = screen.getByText('삭제');
+    fireEvent.click(button);
+
+    expect(
+      JSON.parse(localStorage.getItem('ToDoList') as string),
+    ).not.toContain('ToDo 2');
+    expect(url.textContent).toBe('/');
   });
 });
