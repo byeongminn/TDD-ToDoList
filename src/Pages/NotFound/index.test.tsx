@@ -8,9 +8,11 @@ import { NotFound } from '.';
 
 describe('<NotFound />', () => {
   it('renders component correctly', () => {
-    render(<NotFound />);
+    const { container } = render(<NotFound />);
 
     const message = screen.getByText('Not Found');
     expect(message).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 });
