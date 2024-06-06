@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> renders component correctly 1`] = `
+<div>
+  <div
+    class="sc-iGgVNO jvnxrv"
+  >
+    <div
+      class="sc-gsFSjX exaqRz"
+    >
+      <div
+        class="sc-kAycRU dCZHbL"
+      >
+        <a
+          class="sc-imWZod fbRJDM"
+          href="/detail/0"
+        >
+          ToDo 1
+        </a>
+        <div
+          class="sc-fqkwJk BIzEt"
+        >
+          <div
+            class="sc-dcJtft drInyG"
+          >
+            삭제
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-kAycRU dCZHbL"
+      >
+        <a
+          class="sc-imWZod fbRJDM"
+          href="/detail/1"
+        >
+          ToDo 2
+        </a>
+        <div
+          class="sc-fqkwJk BIzEt"
+        >
+          <div
+            class="sc-dcJtft drInyG"
+          >
+            삭제
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-kAycRU dCZHbL"
+      >
+        <a
+          class="sc-imWZod fbRJDM"
+          href="/detail/2"
+        >
+          ToDo 3
+        </a>
+        <div
+          class="sc-fqkwJk BIzEt"
+        >
+          <div
+            class="sc-dcJtft drInyG"
+          >
+            삭제
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      class="sc-jXbVAB eSbMMU"
+      href="/add"
+    >
+      +
+    </a>
+  </div>
+</div>
+`;

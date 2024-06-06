@@ -15,7 +15,7 @@ describe('<List />', () => {
   it('renders component correctly', () => {
     localStorage.setItem('ToDoList', '["ToDo 1", "ToDo 2", "ToDo 3"]');
 
-    render(
+    const { container } = render(
       <MemoryRouter initialEntries={['/']}>
         <List />
       </MemoryRouter>,
@@ -34,6 +34,8 @@ describe('<List />', () => {
 
     const addButton = screen.getByText('+');
     expect(addButton).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('deletes toDo item', () => {
