@@ -7,6 +7,22 @@
   5. 삭제 버튼을 클릭하면 현재 보이는 할 일을 삭제하고, 할 일 목록 페이지('/')로 이동한다.
 */
 
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+
 describe('<Detail />', () => {
-  it('renders component correctly', () => {});
+  it('renders component correctly', () => {
+    localStorage.setItem('ToDoList', '["ToDo 1","ToDo 2"]');
+
+    render(
+      <MemoryRouter initialEntries={['/detail/1']}>
+        <Routes>
+          <Route path="/detail/:id" element={<Detail />} />
+        </Routes>
+      </MemoryRouter>,
+    );
+
+    const toDoItem = screen.getByText('ToDo 2');
+    expect(toDoItem).toBeInTheDocument();
+  });
 });
