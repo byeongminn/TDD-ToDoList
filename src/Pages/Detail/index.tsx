@@ -1,3 +1,4 @@
+import { Button } from 'Components';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -15,6 +16,11 @@ export const Detail = () => {
   return (
     <Container>
       <ToDo>{toDo}</ToDo>
+      <Button
+        label="삭제"
+        backgroundColor="#ff1744"
+        hoverBackgroundColor="#f01440"
+      />
     </Container>
   );
 };
