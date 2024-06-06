@@ -38,6 +38,21 @@ export const Detail = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+`;
 
-const ToDo = styled.div``;
+const ToDo = styled.div`
+  margin-bottom: 1.25rem;
+  padding: 0.625rem;
+  min-width: 21.875rem;
+  height: 21.875rem;
+  border: 1px solid #bdbdbd;
+  overflow-y: auto;
+`;
