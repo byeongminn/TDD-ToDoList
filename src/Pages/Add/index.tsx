@@ -25,6 +25,14 @@ export const Add = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+`;
 
-const Input = styled.input``;
+const Input = styled.input`
+  padding: 0.625rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 1rem;
+`;
