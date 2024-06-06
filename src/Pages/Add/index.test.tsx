@@ -12,7 +12,11 @@ import { MemoryRouter, useLocation } from 'react-router-dom';
 
 describe('<Add />', () => {
   it('renders component correctly', () => {
-    render(<Add />);
+    render(
+      <MemoryRouter initialEntries={['/add']}>
+        <Add />
+      </MemoryRouter>,
+    );
 
     const input = screen.getByPlaceholderText('할 일을 입력해 주세요.');
     expect(input).toBeInTheDocument();
@@ -45,7 +49,7 @@ describe('<Add />', () => {
 
     fireEvent.change(input, { target: { value: 'New ToDo' } });
     fireEvent.click(button);
-    expect(localStorage.getItem('ToDoList')).toBe('["Old ToDo", "New ToDo"]');
+    expect(localStorage.getItem('ToDoList')).toBe('["Old ToDo","New ToDo"]');
     expect(url.textContent).toBe('/');
   });
 });
