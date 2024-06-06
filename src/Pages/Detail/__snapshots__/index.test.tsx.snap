@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Detail /> renders component correctly 1`] = `
+<div>
+  <div
+    class="sc-iGgVNO eNYtZZ"
+  >
+    <div
+      class="sc-gsFSjX gulOZS"
+    >
+      ToDo 2
+    </div>
+    <div
+      class="sc-fqkwJk BIzEt"
+    >
+      <div
+        class="sc-dcJtft drInyG"
+      >
+        삭제
+      </div>
+    </div>
+  </div>
+</div>
+`;

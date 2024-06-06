@@ -15,7 +15,7 @@ describe('<Detail />', () => {
   it('renders component correctly', () => {
     localStorage.setItem('ToDoList', '["ToDo 1","ToDo 2"]');
 
-    render(
+    const { container } = render(
       <MemoryRouter initialEntries={['/detail/1']}>
         <Routes>
           <Route path="/detail/:id" element={<Detail />} />
@@ -28,6 +28,8 @@ describe('<Detail />', () => {
 
     const button = screen.getByText('삭제');
     expect(button).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('redirect to Not Found Page if todo id is wrong', () => {
