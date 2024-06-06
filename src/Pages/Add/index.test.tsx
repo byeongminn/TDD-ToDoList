@@ -52,4 +52,30 @@ describe('<Add />', () => {
     expect(localStorage.getItem('ToDoList')).toBe('["Old ToDo","New ToDo"]');
     expect(url.textContent).toBe('/');
   });
+
+  it('do nothing if the input is empty', () => {
+    localStorage.setItem('ToDoList', '["Old ToDo"]');
+
+    const TestComponent = () => {
+      const { pathname } = useLocation();
+
+      return <div>{pathname}</div>;
+    };
+
+    render(
+      <MemoryRouter initialEntries={['/add']}>
+        <TestComponent />
+        <Add />
+      </MemoryRouter>,
+    );
+
+    const url = screen.getByText('/add');
+    expect(url).toBeInTheDocument();
+
+    const button = screen.getByText('추가');
+    fireEvent.click(button);
+
+    expect(localStorage.getItem('ToDoList')).toBe('["Old ToDo"]');
+    expect(url.textContent).toBe('/add');
+  });
 });
