@@ -9,6 +9,7 @@
 
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { Detail } from '.';
 
 describe('<Detail />', () => {
   it('renders component correctly', () => {
