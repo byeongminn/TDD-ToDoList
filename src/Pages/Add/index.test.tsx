@@ -7,6 +7,7 @@
 */
 
 import { render, screen } from '@testing-library/react';
+import { Add } from '.';
 
 describe('<Add />', () => {
   it('renders component correctly', () => {
