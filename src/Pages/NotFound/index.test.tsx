@@ -4,6 +4,7 @@
 */
 
 import { render, screen } from '@testing-library/react';
+import { NotFound } from '.';
 
 describe('<NotFound />', () => {
   it('renders component correctly', () => {
